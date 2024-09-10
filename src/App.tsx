@@ -1,41 +1,28 @@
-import {
-  Button,
-  Container,
-  Form,
-  Grid,
-  Header,
-  Icon,
-  Segment,
-  Statistic,
-} from "semantic-ui-react";
+import { Container, Grid, Icon, Segment, Statistic } from "semantic-ui-react";
 import "./App.css";
+import CustomHeader from "./components/commons/CustomHeader";
+import EntryForm from "./components/form/EntryForm";
+import StatisticItem from "./components/StatisticItem";
 
 function App() {
   return (
     <Container>
-      <Header as="h1">Budget</Header>
+      <CustomHeader title="Budget" type="h1" />
 
-      <Statistic size="small">
-        <Statistic.Label>Your Balance:</Statistic.Label>
-        <Statistic.Value>2,500.53</Statistic.Value>
-      </Statistic>
+      <StatisticItem title="Your bal" />
 
       <Segment textAlign="center">
         <Grid columns={2} divided>
           <Grid.Row>
             <Grid.Column>
               <Statistic size="tiny" color="green">
-                <Statistic.Label style={{ textAlign: "left" }}>
-                  Incoming:
-                </Statistic.Label>
+                <Statistic.Label>Incoming:</Statistic.Label>
                 <Statistic.Value>1,045.50</Statistic.Value>
               </Statistic>
             </Grid.Column>
             <Grid.Column>
               <Statistic size="tiny" color="red">
-                <Statistic.Label style={{ textAlign: "left" }}>
-                  Expenses:
-                </Statistic.Label>
+                <Statistic.Label>Expenses:</Statistic.Label>
                 <Statistic.Value>623.50</Statistic.Value>
               </Statistic>
             </Grid.Column>
@@ -43,7 +30,7 @@ function App() {
         </Grid>
       </Segment>
 
-      <Header as="h3">History</Header>
+      <CustomHeader title="History" type="h3" />
 
       <Segment color="red">
         <Grid columns={3} textAlign="right">
@@ -94,30 +81,9 @@ function App() {
         </Grid>
       </Segment>
 
-      <Header as="h3">Add new transaction</Header>
+      <CustomHeader title="Add new transaction" type="h3" />
 
-      <Form unstackable>
-        <Form.Group>
-          <Form.Input
-            icon="tags"
-            width={12}
-            label="Description"
-            placeholder="New shinny thing"
-          />
-          <Form.Input
-            width={4}
-            label="Value"
-            placeholder="100.00"
-            icon="dollar"
-            iconPosition="left"
-          />
-        </Form.Group>
-        <Button.Group style={{ marginTop: 20 }}>
-          <Button>Cancel</Button>
-          <Button.Or />
-          <Button primary>Ok</Button>
-        </Button.Group>
-      </Form>
+      <EntryForm />
     </Container>
   );
 }
