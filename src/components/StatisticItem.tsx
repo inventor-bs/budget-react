@@ -1,19 +1,28 @@
-import { Statistic } from "semantic-ui-react";
+import { SemanticCOLORS, Statistic } from "semantic-ui-react";
+import { StatisticSizeProp } from "semantic-ui-react/dist/commonjs/views/Statistic/Statistic";
 
-interface DisplayBalanceProperties {
+interface StatisticItemProperties {
   title?: string;
-  value?: number;
-  size?: string;
-  color?: string;
+  value?: string;
+  size?: StatisticSizeProp;
+  color?: SemanticCOLORS;
 }
 
-const DisplayBalance = ({ title, value }: DisplayBalanceProperties) => {
+const DEFAULT_SIZE = "small";
+const DEFAULT_COLOR = "black";
+
+const StatisticItem = ({
+  title,
+  value,
+  size = DEFAULT_SIZE,
+  color = DEFAULT_COLOR,
+}: StatisticItemProperties) => {
   return (
-    <Statistic size="small">
+    <Statistic size={size} color={color}>
       <Statistic.Label>{title}</Statistic.Label>
       <Statistic.Value>{value}</Statistic.Value>
     </Statistic>
   );
 };
 
-export default DisplayBalance;
+export default StatisticItem;
